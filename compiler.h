@@ -44,6 +44,7 @@ struct token
 {
   int type;
   int flags;
+  struct pos pos;
 
   union
   {
@@ -130,7 +131,6 @@ void compiler_error(struct compile_process *compiler, const char *msg, ...)
   exit(-1);
 }
 
-void compiler_warning(struct compile_process *compiler, const char *msg, ...);
 void compiler_error(struct compile_process *compiler, const char *msg, ...);
-
+void compiler_warning(struct compile_process *compiler, const char *msg, ...);
 #endif
