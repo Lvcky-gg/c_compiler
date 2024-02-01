@@ -41,6 +41,9 @@ const char *read_number_str()
     struct buffer *buffer = buffer_create();
     char c = peekc();
     LEX_GETC_IF(buffer, c, (c >= '0' && c <= '9'));
+
+    buffer_write(buffer, 0x0);
+    return buffer_ptr(buffer);
 }
 struct token *token_make_number()
 {
