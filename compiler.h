@@ -13,6 +13,12 @@ struct pos
 
 enum
 {
+  LEXICAL_ANALYSIS_ALL_OK,
+  LEXICAL_ANALYSIS_INPUT_ERROR
+};
+
+enum
+{
   TOKEN_TYPE_IDENTIFIER,
   TOKEN_TYPE_KEYWORD,
   TOKEN_TYPE_OPEREATOR,
@@ -94,5 +100,10 @@ struct compile_process *compile_process_create(const char *filename,
 char compile_process_next_char(struct lex_process *lex_process);
 char compile_process_peek_char(struct lex_process *lex_process);
 void compile_process_push_char(struct lex_process *lex_process, char c);
+
+void lex_process_free(struct lex_process *process);
+void *lex_process_private(struct lex_process *process);
+struct vector *lex_process_tokens(struct lex_process *process);
+int lex(struct lex_process *process);
 
 #endif
